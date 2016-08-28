@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template1.xhtml">
+
+    <ui:define name="title">New Member Form</ui:define>
+
+    <ui:define name="head">
+        <style type="text/css">
+            .grid-pad .ui-panelgrid-content .ui-panelgrid-cell.ui-grid-col-12 {
+                padding-bottom: 10px;
+            }
+        </style>
+    </ui:define>
+
+    <ui:define name="content">
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="User Form"/></h1>
+                <p:growl id="messages" showDetail="true" />
+                <p:spacer height="5px"/>
+                <p:panel header="Create Login Information">
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Login Id:" for="loginId" />
+                        <p:inputText id="loginId" value="#{authenticate.loginId}" title="MemberId" />
+                        <h:outputLabel value="Password:" for="password" />
+                        <p:password id="password" value="#{authenticate.userpassword}" title="Password" />
+                        <h:outputLabel value="Confirm Password:" for="confirmPassword" />
+                        <p:password id="confirmPassword" match="password" 
+                                    value="#{authenticate.userpassword}" 
+                                    title="confirmPassword" />                        
+                    </h:panelGrid>
+                </p:panel>                
+                <p:commandButton style="margin-top: 10px; width: 150px; height: 50px" 
+                                 value="Create" 
+                                 update="messages" 
+                                 action="#{authenticate.createUser()}"/>
+            </h:form>
+        </f:view>
+    </ui:define>
+
+</ui:composition>

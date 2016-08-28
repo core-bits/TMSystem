@@ -1,0 +1,112 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template1.xhtml">
+ 
+     <ui:define name="title">New Member Form</ui:define>
+                
+    <ui:define name="head">
+        <style type="text/css">
+            .grid-pad .ui-panelgrid-content .ui-panelgrid-cell.ui-grid-col-12 {
+                padding-bottom: 10px;
+            }
+        </style>
+    </ui:define>
+    
+        <ui:define name="content">
+            <f:view>
+                <h:form>
+                    <h1><h:outputText value="Create"/></h1>
+                    <p:spacer height="5px"/>
+                    <p:panel header="Memeber Information">
+                        <h:panelGrid columns="4">
+                            <h:outputLabel value="MemberId:" for="memberId" />
+                            <p:inputText id="memberId" value="#{register.member.memberId}" title="MemberId" />
+                            <h:outputLabel value="MemberName:" for="memberName" />
+                            <p:inputText id="memberName" value="#{register.member.memberName}" title="MemberName" />
+                            <h:outputLabel value="MemberAddress:" for="memberAddress" />
+                            <p:inputText id="memberAddress" value="#{register.member.memberAddress}" title="MemberAddress" />
+                            <h:outputLabel value="Sex:" for="sex" />
+                            <p:inputText id="sex" value="#{register.member.sex}" title="Sex" />
+                            <h:outputLabel value="Bank:" for="bank" />
+                            <p:inputText id="bank" value="#{register.member.bank}" title="Bank" />
+                            <h:outputLabel value="AccountNumber:" for="accountNumber" />
+                            <p:inputText id="accountNumber" value="#{register.member.accountNumber}" title="AccountNumber" />
+                            <h:outputLabel value="MobileNumber:" for="mobileNumber" />
+                            <p:inputText id="mobileNumber" value="#{register.member.mobileNumber}" title="MobileNumber" />
+                            <h:outputLabel value="Email:" for="email" />
+                            <p:inputText id="email" value="#{register.member.email}" title="Email" />
+                            <h:outputLabel value="MaritalStatus:" for="maritalStatus" />
+                            <p:inputText id="maritalStatus" value="#{register.member.maritalStatus}" title="MaritalStatus" />
+                            <h:outputLabel value="BuisnessUnit:" for="buisnessUnit" />
+                            <p:selectOneMenu id="buisnessUnit" value="#{register.member.buisnessUnit}" title="BuisnessUnit" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{fixme}"/>
+                            </p:selectOneMenu>
+                            <h:outputLabel value="Department:" for="department" />
+                            <p:selectOneMenu id="department" value="#{register.member.department}" title="Department" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{fixme}"/>
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                    </p:panel>
+                    <p:panel header="Witness">
+                        <h:panelGrid columns="4">
+                            <h:outputLabel value="WitnessName:" for="witnessName" />
+                            <p:inputText id="witnessName" value="#{register.member.witnessName}" title="WitnessName" />
+                            <h:outputLabel value="WitnessResidentialAddress:" for="witnessResidentialAddress" />
+                            <p:inputText id="witnessResidentialAddress" value="#{register.member.witnessResidentialAddress}" title="WitnessResidentialAddress" />
+                            <h:outputLabel value="WitnessSignature:" for="witnessSignature" />
+                            <p:inputTextarea rows="4" cols="30" id="witnessSignature" value="#{register.member.witnessSignature}" title="WitnessSignature" />
+                            <h:outputLabel value="WitnessApprovalDate:" for="witnessApprovalDate" />
+                            <p:inputText id="witnessApprovalDate" value="#{register.member.witnessApprovalDate}" title="WitnessApprovalDate" >
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </p:inputText>
+                        </h:panelGrid>
+                    </p:panel>
+                    <p:panel header="Next Of Kin">
+                        <h:panelGrid columns="4">
+                            <h:outputLabel value="NextOfKin:" for="nextOfKin" />
+                            <p:inputText id="nextOfKin" value="#{register.member.nextOfKin}" title="NextOfKin" />
+                            <h:outputLabel value="RelationshipToNok:" for="relationshipToNok" />
+                            <p:inputText id="relationshipToNok" value="#{register.member.relationshipToNok}" title="RelationshipToNok" />
+                            <h:outputLabel value="PhoneOfNok:" for="phoneOfNok" />
+                            <p:inputText id="phoneOfNok" value="#{register.member.phoneOfNok}" title="PhoneOfNok" />
+                            <h:outputLabel value="AddressOfNok:" for="addressOfNok" />
+                            <p:inputText id="addressOfNok" value="#{register.member.addressOfNok}" title="AddressOfNok" />
+                        </h:panelGrid>
+                    </p:panel>
+                    <p:panel header="Referral">
+                        <h:panelGrid columns="4">
+                            <h:outputLabel value="ReferralName:" for="referralName" />
+                            <p:inputText id="referralName" value="#{register.member.referralName}" title="ReferralName" />
+                        </h:panelGrid>
+                    </p:panel>
+                    <p:panel header="Undertaking">
+                        <h:panelGrid columns="4">
+                            <h:outputLabel value="UndertakingDate:" for="undertakingDate" />
+                            <p:inputText id="undertakingDate" value="#{register.member.undertakingDate}" title="UndertakingDate" >
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </p:inputText>
+                            <h:outputLabel value="UndertakingName:" for="undertakingName" />
+                            <p:inputText id="undertakingName" value="#{register.member.undertakingName}" title="UndertakingName" />
+                            <h:outputLabel value="AuthorityToDeductAmount:" for="authorityToDeductAmount" />
+                            <p:inputText id="authorityToDeductAmount" value="#{register.member.authorityToDeductAmount}" title="AuthorityToDeductAmount" />
+                            <h:outputLabel value="Deduction Effective Date:" for="authorityToDeductEffectiveDate" />
+                            <p:calendar id="authorityToDeductEffectiveDate" 
+                                        value="#{register.member.authorityToDeductEffectiveDate}" 
+                                        title="Authority To Deduct EffectiveDate" >
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </p:calendar>
+                            <h:outputLabel value="ApplicantSignature:" for="applicantSignature" />
+                            <p:inputTextarea rows="4" cols="30" id="applicantSignature" value="#{register.member.applicantSignature}" title="ApplicantSignature" />
+
+                        </h:panelGrid>
+                    </p:panel>
+                </h:form>
+            </f:view>
+        </ui:define>
+
+</ui:composition>

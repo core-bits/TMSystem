@@ -1,0 +1,125 @@
+/* General */
+$fontSize: 14px;
+
+/* Menu */
+$submenuFontSize: 12px;
+$menuBgColor: #3b3e47;
+$menuitemColor: #ffffff;
+$menuitemHoverBgColor: #007be5;
+$menuitemActiveColor: #007be5;
+$menuitemActiveBgColor: #2f3138;
+
+/* Topbar */
+$topbarItemColor: #ffffff;
+$topbarItemHoverColor: #77c7ff;
+
+// === Button Colors === //
+/* GreenButton */
+$greenButton: #1f9e53;
+$greenButtonBorder: #107533;
+$greenButtonHover: #2eb971;
+$greenButtonActive: #178544;
+
+/* YellowButton */
+$yellowButton: #eed511;
+$yellowButtonBorder: #cdb80d;
+$yellowButtonHover: #f8e653;
+$yellowButtonActive: #d4b301;
+
+/* RedButton */
+$redButton: #b8312e;
+$redButtonBorder: #9c1627;
+$redButtonHover: #d2524f;
+$redButtonActive: #9c1627;
+
+/* greyButton */
+$greyButton: #ECEFF1;
+$greyButtonBorder: #CCCFD2;
+$greyButtonText: #525252;
+$greyButtonHover: #F5FBFF;
+$greyButtonActive: #CCCFD2;
+
+/* BlackButton */
+$blackButton: #353535;
+$blackButtonBorder: #212121;
+$blackButtonHover: #4a4a4a;
+$blackButtonActive: #212121;
+
+/* BlueButton */
+$blueButton: #2c78c7;
+$blueButtonBorder: #1a51b0;
+$blueButtonHover: #409cdc;
+$blueButtonActive: #1a51b0;
+
+/* AquaButton */
+$aquaButton: #0084b4;
+$aquaButtonBorder: #087298;
+$aquaButtonHover: #03A8E4;
+$aquaButtonActive: #087298;
+
+/* NavyButton */
+$navyButton: #1f3b59;
+$navyButtonBorder: #21374f;
+$navyButtonHover: #3C6592;
+$navyButtonActive: #21374f;
+
+// === MIXINS === //
+@mixin border-radius($val) {
+    -moz-border-radius: $val;
+    -webkit-border-radius: $val;
+    border-radius: $val;
+}
+
+@mixin border-radius-right($val) {
+    -moz-border-radius-topright: $val;
+    -webkit-border-top-right-radius: $val;
+    border-top-right-radius: $val;
+    -moz-border-radius-bottomright: $val;
+    -webkit-border-bottom-right-radius: $val;
+    border-bottom-right-radius: $val; 
+}
+
+@mixin border-radius-left($val) {
+    -moz-border-radius-topleft: $val;
+    -webkit-border-top-left-radius: $val;
+    border-top-left-radius: $val;
+    -moz-border-radius-bottomleft: $val;
+    -webkit-border-bottom-left-radius: $val;
+    border-bottom-left-radius: $val;
+}
+
+@mixin border-radius-top($val) {
+    -moz-border-radius-topleft: $val;
+    -webkit-border-top-left-radius: $val;
+    border-top-left-radius: $val;
+    -moz-border-radius-topright: $val;
+    -webkit-border-top-right-radius: $val;
+    border-top-right-radius: $val;
+}
+
+@mixin border-radius-bottom($val) {
+    -moz-border-radius-bottomleft: $val;
+    -webkit-border-bottom-left-radius: $val;
+    border-bottom-left-radius: $val;
+    -moz-border-radius-bottomright: $val;
+    -webkit-border-bottom-right-radius: $val;
+    border-bottom-right-radius: $val;
+}
+
+@mixin gradient($deg, $color1, $color2) {
+    background: -moz-linear-gradient($deg, $color1 0%, $color2 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, $color1), color-stop(100%, $color2)); /* safari4+,chrome */
+    background: -webkit-linear-gradient($deg, $color1 0%, $color2 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient($deg, $color1 0%, $color2 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient($deg, $color1 0%, $color2 100%); /* ie10+ */
+    background: linear-gradient($deg, $color1 0%, $color2 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$color1}', endColorstr='#{$color2}',GradientType=1 ); /* ie6-9 */
+}
+
+@mixin transition($transition...) {
+    -moz-transition:    $transition;
+    -o-transition:      $transition;
+    -webkit-transition: $transition;
+    transition:         $transition;
+}
+

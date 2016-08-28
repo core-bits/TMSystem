@@ -1,0 +1,119 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">Loan Application</ui:define>
+
+    <ui:define name="content">
+        <h:form prependId="false">
+            <div class="ui-fluid">
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <div class="card">
+                            <h1>Loan Calculator</h1>
+                            <p:messages showDetail="true" autoUpdate="true" closable="true"/>
+                            <p:panelGrid columns="3" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+                                <p:outputLabel for="loanType" value="Loan Type"/>
+                                <p:selectOneMenu id="loanType">
+                                    <f:selectItem itemLabel="Select Loan Type" itemValue="" />
+                                    <f:selectItem itemLabel="Quick Cash" itemValue="Quick Cash" />
+                                    <f:selectItem itemLabel="Regular Loan" itemValue="Regular Loan" />
+                                </p:selectOneMenu>
+                                <p:spacer/>
+                                
+                                <p:outputLabel for="loanAmount" value="Loan Amount"/>
+                                <p:outputPanel>
+                                    <p:inputText value="#{loanApplicationMBean.loanAmount}" id="loanAmount">
+                                        <p:ajax process="loanAmount" event="valueChange" listener="#{loanApplicationMBean.loanAmountInputControl}" update="@form"  /> 
+                                    </p:inputText>
+                                    <p:slider maxValue="10000000" for="loanAmount" />
+                                </p:outputPanel>
+                                <p:message for="loanAmount" />
+
+                                <p:outputLabel for="noOfPayment" value="No of Payments"/>
+                                <p:outputPanel>
+                                    <p:inputText value="#{loanApplicationMBean.numberOfPayment}" id="noOfPayment">
+                                        <p:ajax process="noOfPayment" event="valueChange" listener="#{loanApplicationMBean.tenureInputControl}" update="@form" /> 
+                                    </p:inputText>
+                                    <p:slider maxValue="24" for="noOfPayment" />
+                                </p:outputPanel> 
+                                <p:message for="noOfPayment" />
+
+                                <p:outputLabel for="startDate" value="Start Date"/>
+                                <p:calendar readonlyInput="true" value="#{loanApplicationMBean.loanStartDate}" mindate="2016-08-28" pattern="yyyy-MM-dd" id="startDate">
+                                    <p:ajax process="startDate" event="dateSelect" listener="#{loanApplicationMBean.startDateInputControl}" update="@form" /> 
+                                </p:calendar>
+                                <p:spacer/>
+                                
+                                <p:outputLabel rendered="#{not empty loanApplicationMBean.payment.repaymentEntry}" for="totalInterest" value="Total Interest"/>
+                                <p:inputText rendered="#{not empty loanApplicationMBean.payment.repaymentEntry}" value="#{loanApplicationMBean.payment.totalInterest}" readonly="true" id="totalInterest">
+                                    <f:convertNumber type="currency"  currencySymbol=""/>
+                                </p:inputText>
+                                <p:spacer/>
+                                
+                                <p:outputLabel rendered="#{not empty loanApplicationMBean.payment.repaymentEntry}" for="totalCostOfLoan" value="Total Cost of Loan"/>
+                                <p:inputText rendered="#{not empty loanApplicationMBean.payment.repaymentEntry}" value="#{loanApplicationMBean.payment.totalCostOfLoan}" readonly="true" id="totalCostOfLoan">
+                                    <f:convertNumber type="currency"  currencySymbol=""/>
+                                </p:inputText>
+                                <p:spacer/>
+                                
+                                <p:spacer rendered="#{not empty loanApplicationMBean.payment.repaymentEntry}"/>
+                                <p:commandButton rendered="#{not empty loanApplicationMBean.payment.repaymentEntry}" action="#{pretty.registrationPage()}" value="Apply"></p:commandButton>
+                                <p:spacer/>
+                            </p:panelGrid>                            
+                        </div>
+                        
+                        <div class="card">
+                            <h1>Repayment Breakdown</h1>
+                            <p:dataTable  id="repayment" rowIndexVar="row" rendered="#{not empty loanApplicationMBean.payment.repaymentEntry}" var="entry" value="#{loanApplicationMBean.payment.repaymentEntry}" reflow="true">
+                                <p:column headerText="S/No">
+                                    <h:outputText value="#{row + 1}" />
+                                </p:column>
+
+                                <p:column headerText="Payment Date">
+                                    <h:outputText value="#{entry.paymentDate}" />
+                                </p:column>
+
+                                <p:column headerText="Beginning Balance">
+                                    <h:outputText style="float: right" value="#{entry.beginingBalance}">
+                                        <f:convertNumber type="currency"  currencySymbol=""/>
+                                    </h:outputText>
+                                </p:column>
+
+                                <p:column headerText="Monthly Payment">
+                                    <h:outputText style="float: right" value="#{entry.monthlyPayment}">
+                                        <f:convertNumber type="currency"  currencySymbol=""/>
+                                    </h:outputText>
+                                </p:column>
+                                
+                                <p:column headerText="Principal">
+                                    <h:outputText style="float: right" value="#{entry.principal}">
+                                        <f:convertNumber type="currency"  currencySymbol=""/>
+                                    </h:outputText>
+                                </p:column>
+                                
+                                <p:column headerText="Interest">
+                                    <h:outputText style="float: right" value="#{entry.interest}">
+                                        <f:convertNumber type="currency"  currencySymbol=""/>
+                                    </h:outputText>
+                                </p:column>
+                                
+                                <p:column headerText="Ending Balance">
+                                    <h:outputText style="float: right" value="#{entry.endinBalance}">
+                                        <f:convertNumber type="currency"  currencySymbol=""/>
+                                    </h:outputText>
+                                </p:column>
+                            </p:dataTable>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template1.xhtml">
+
+    <ui:define name="title">New Member Form</ui:define>
+
+    <ui:define name="head">
+        <style type="text/css">
+            .grid-pad .ui-panelgrid-content .ui-panelgrid-cell.ui-grid-col-12 {
+                padding-bottom: 10px;
+            }
+        </style>
+    </ui:define>
+
+    <ui:define name="content">
+        <f:view>
+            <h:form enctype="multipart/form-data">
+                <h1><h:outputText value="Registration Cont."/></h1>
+                <p:growl id="messages" showDetail="true" />
+                <p:spacer height="5px"/>
+                <p:panel header="Witness">
+                    <h:panelGrid columns="4">
+                        <h:outputLabel value="Witness Signature:" for="witnessSignature" />
+                        <p:fileUpload id="witnessSignature" fileUploadListener="#{register.file}" mode="simple" skinSimple="true" /> 
+                    </h:panelGrid>
+                </p:panel>
+                <p:panel header="Undertaking">
+                    <h:panelGrid columns="4">
+                        <h:outputLabel value="Applicant Signature:" for="applicantSignature" />
+                        <p:fileUpload id="applicantSignature" 
+                                      fileUploadListener="#{register.applicantSig}" 
+                                      mode="simple" skinSimple="true" />                         
+                    </h:panelGrid>
+                </p:panel>
+                <h:panelGrid columns="2">
+                <p:commandButton style="margin-top: 10px; width: 150px; height: 50px" 
+                                 value="Complete Sign Up" 
+                                 update="messages" 
+                                 action="#{register.createMemberCont()}"/>
+                <p:commandButton style="margin-top: 10px; width: 150px; height: 50px" 
+                                 value="Continue..." 
+                                 update="messages" 
+                                 action="#{pretty.newuserPage()}"/>
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+    </ui:define>
+
+</ui:composition>

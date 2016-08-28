@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<pretty-config xmlns="http://ocpsoft.org/prettyfaces/3.3.3" 
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+               xsi:schemaLocation="http://ocpsoft.org/prettyfaces/3.3.3  http://ocpsoft.org/xml/ns/prettyfaces/ocpsoft-pretty-faces-3.3.3.xsd">
+
+    <url-mapping id="welcome">
+        <pattern value="/welcome/" />
+        <view-id value="/faces/welcomePrimefaces.xhtml"/>
+    </url-mapping>
+    <url-mapping id="register">
+        <pattern value="/register/" />
+        <view-id value="/faces/pages/registration.xhtml"/>
+    </url-mapping>
+    <url-mapping id="newmember">
+        <pattern value="/registration/" />
+        <view-id value="/faces/registration.xhtml"/>
+    </url-mapping>
+    <url-mapping id="newmembercont">
+        <pattern value="/reg_cont/" />
+        <view-id value="/faces/reg_cont.xhtml"/>
+    </url-mapping>
+    <url-mapping id="login">
+        <pattern value="/login1/" />
+        <view-id value="/faces/pages/login/authenticate.xhtml"/>
+    </url-mapping>
+    <url-mapping id="authenticate">
+        <pattern value="/login/" />
+        <view-id value="/faces/login.xhtml"/>
+    </url-mapping>
+    <url-mapping id="dashboard">
+        <pattern value="/dashboard/" />
+        <view-id value="/faces/dashboard.xhtml"/>
+    </url-mapping>
+    <url-mapping id="home">
+        <pattern value="/home/" />
+        <view-id value="/faces/landing.xhtml"/>
+    </url-mapping>
+    <url-mapping id="createuser">
+        <pattern value="/createuser/" />
+        <view-id value="/faces/createuser.xhtml"/>
+    </url-mapping>
+</pretty-config>
